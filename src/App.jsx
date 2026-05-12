@@ -173,9 +173,8 @@ function PhoneDemo() {
     setLoading(true);
     try {
       const res = await fetch("/api/chat", {
-  method: "POST", headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ system: SYSTEM_PROMPT, messages: history }),
-});
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ system: SYSTEM_PROMPT, messages: history }),
       });
       const data = await res.json();
       setMessages(p => [...p, { role: "assistant", content: data.content?.[0]?.text || "Un momento ☕", time: formatTime() }]);
@@ -303,7 +302,7 @@ function AuditDashboard() {
         <div style={{ width: 300, borderRight: `1px solid ${C.redBdr}`, display: "flex", flexDirection: "column", flexShrink: 0 }}>
           <div style={{ padding: "10px 12px", borderBottom: `1px solid rgba(184,32,32,0.1)` }}>
             <div style={{ display: "flex", alignItems: "center", gap: 7, background: C.card, borderRadius: 8, padding: "6px 12px" }}>
-              <Search size={11} color={C.dim} />
+              <Search size={11} color={C.txtD} />
               <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar cliente..."
                 style={{ background: "none", border: "none", outline: "none", color: C.txtB, fontSize: 12, flex: 1, fontFamily: "sans-serif" }} />
             </div>
@@ -368,8 +367,8 @@ function AuditDashboard() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={CHART_DATA} barGap={3}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(184,32,32,0.08)" vertical={false} />
-                    <XAxis dataKey="dia" tick={{ fill: C.dim, fontSize: 11, fontFamily: "sans-serif" }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fill: C.dim, fontSize: 11, fontFamily: "sans-serif" }} axisLine={false} tickLine={false} width={26} />
+                    <XAxis dataKey="dia" tick={{ fill: C.txtD, fontSize: 11, fontFamily: "sans-serif" }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fill: C.txtD, fontSize: 11, fontFamily: "sans-serif" }} axisLine={false} tickLine={false} width={26} />
                     <Tooltip contentStyle={{ background: C.card, border: `1px solid ${C.redBdr}`, borderRadius: 8, fontSize: 12, fontFamily: "sans-serif" }} labelStyle={{ color: C.red }} itemStyle={{ color: C.txtB }} />
                     <Bar dataKey="mensajes" fill={C.red} fillOpacity={0.75} radius={[3,3,0,0]} name="Mensajes" />
                     <Bar dataKey="pedidos" fill="#00A884" fillOpacity={0.75} radius={[3,3,0,0]} name="Pedidos" />
@@ -422,7 +421,7 @@ export default function App() {
             <div style={{ fontSize: 10, color: C.txtD, fontFamily: "sans-serif", letterSpacing: 1, textTransform: "uppercase" }}>por Baristop</div>
           </div>
         </div>
-        <button style={{ background: C.red, color: "#fff", border: "none", padding: "9px 22px", borderRadius: 20, cursor: "pointer", fontSize: 13, fontWeight: 700, fontFamily: "sans-serif", letterSpacing: 0.3 }}>
+        <button onClick={() => document.getElementById("cta").scrollIntoView({behavior:"smooth"})} style={{ background: C.red, color: "#fff", border: "none", padding: "9px 22px", borderRadius: 20, cursor: "pointer", fontSize: 13, fontWeight: 700, fontFamily: "sans-serif", letterSpacing: 0.3 }}>
           Lo quiero para mi negocio
         </button>
       </nav>
@@ -518,7 +517,7 @@ export default function App() {
         <p style={{ fontSize: 15, color: C.txtB, margin: "0 0 34px", fontFamily: "sans-serif" }}>
           Agenda 20 minutos. Te mostramos a Bari funcionando con tu catálogo real.
         </p>
-        <button onClick={() => openLink("https://wa.me/524491234567?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Bari%20para%20mi%20negocio")} style={{ background: C.red, color: "#fff", border: "none", padding: "15px 34px", borderRadius: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, fontFamily: "sans-serif", display: "inline-flex", alignItems: "center", gap: 8 }}>
+        <button onClick={() => window.open("https://wa.me/524491234567?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Bari%20para%20mi%20negocio","_blank")} style={{ background: C.red, color: "#fff", border: "none", padding: "15px 34px", borderRadius: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, fontFamily: "sans-serif", display: "inline-flex", alignItems: "center", gap: 8 }}>
           Agendar demo gratuita <ChevronRight size={17} />
         </button>
       </section>
