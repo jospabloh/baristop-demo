@@ -167,9 +167,9 @@ function PhoneDemo() {
     setMessages(p => [...p, { role: "user", content: msg, time }]);
     setLoading(true);
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ system: SYSTEM_PROMPT, messages: history }),
+        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 300, system: SYSTEM_PROMPT, messages: history }),
       });
       const data = await res.json();
       setMessages(p => [...p, { role: "assistant", content: data.content?.[0]?.text || "Un momento ☕", time: formatTime() }]);
@@ -495,7 +495,7 @@ export default function App() {
         <div style={{ display: "flex", gap: 40, justifyContent: "center", flexWrap: "wrap", maxWidth: 780, margin: "0 auto" }}>
           {steps.map(s => (
             <div key={s.n} style={{ flex: "1 1 200px", maxWidth: 230, textAlign: "center" }}>
-              <div style={{ fontSize: 44, color: C.redDim, fontWeight: 700, lineHeight: 1, marginBottom: 10, fontFamily: "sans-serif", color: "rgba(184,32,32,0.25)" }}>{s.n}</div>
+              <div style={{ fontSize: 44, color: "rgba(165,35,35,0.25)", fontWeight: 700, lineHeight: 1, marginBottom: 10, fontFamily: "sans-serif" }}>{s.n}</div>
               <h3 style={{ fontSize: 15, fontWeight: 600, margin: "0 0 8px", color: C.txtH, fontFamily: "sans-serif" }}>{s.title}</h3>
               <p style={{ fontSize: 13, color: C.txtB, lineHeight: 1.6, margin: 0, fontFamily: "sans-serif" }}>{s.desc}</p>
             </div>
@@ -512,7 +512,7 @@ export default function App() {
         <p style={{ fontSize: 15, color: C.txtB, margin: "0 0 34px", fontFamily: "sans-serif" }}>
           Agenda 20 minutos. Te mostramos a Bari funcionando con tu catálogo real.
         </p>
-        <button onClick={() => window.open("https://wa.me/524491234567?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Bari%20para%20mi%20negocio","_blank")} style={{ background: C.red, color: "#fff", border: "none", padding: "15px 34px", borderRadius: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, fontFamily: "sans-serif", display: "inline-flex", alignItems: "center", gap: 8 }}>
+        <button onClick={() => openLink("https://wa.me/524491234567?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Bari%20para%20mi%20negocio")} style={{ background: C.red, color: "#fff", border: "none", padding: "15px 34px", borderRadius: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, fontFamily: "sans-serif", display: "inline-flex", alignItems: "center", gap: 8 }}>
           Agendar demo gratuita <ChevronRight size={17} />
         </button>
       </section>
