@@ -155,7 +155,12 @@ function PhoneDemo() {
   const [usedSugg, setUsedSugg] = useState([]);
   const endRef = useRef(null);
 
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages, loading]);
+  useEffect(() => {
+    if (endRef.current) {
+      const container = endRef.current.parentElement;
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [messages, loading]);
 
   const send = async (text) => {
     const msg = (text || input).trim();
