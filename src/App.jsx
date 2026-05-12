@@ -172,9 +172,10 @@ function PhoneDemo() {
     setMessages(p => [...p, { role: "user", content: msg, time }]);
     setLoading(true);
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 300, system: SYSTEM_PROMPT, messages: history }),
+      const res = await fetch("/api/chat", {
+  method: "POST", headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ system: SYSTEM_PROMPT, messages: history }),
+});
       });
       const data = await res.json();
       setMessages(p => [...p, { role: "assistant", content: data.content?.[0]?.text || "Un momento ☕", time: formatTime() }]);
