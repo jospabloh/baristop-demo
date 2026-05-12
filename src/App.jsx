@@ -517,10 +517,20 @@ export default function App() {
         <p style={{ fontSize: 15, color: C.txtB, margin: "0 0 34px", fontFamily: "sans-serif" }}>
           Agenda 20 minutos. Te mostramos a Bari funcionando con tu catálogo real.
         </p>
-        <button onClick={() => window.open("https://wa.me/524491234567?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Bari%20para%20mi%20negocio","_blank")} style={{ background: C.red, color: "#fff", border: "none", padding: "15px 34px", borderRadius: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, fontFamily: "sans-serif", display: "inline-flex", alignItems: "center", gap: 8 }}>
+        <button onClick={() => window.open("https://wa.me/524498958291?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Bari%20para%20mi%20negocio","_blank")} style={{ background: C.red, color: "#fff", border: "none", padding: "15px 34px", borderRadius: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, fontFamily: "sans-serif", display: "inline-flex", alignItems: "center", gap: 8 }}>
           Agendar demo gratuita <ChevronRight size={17} />
         </button>
       </section>
+
+      {/* Acaciaco credit */}
+      <footer style={{ padding: "24px 40px 32px", textAlign: "center", borderTop: `1px solid ${C.redBdr}` }}>
+        <p style={{ fontSize: 12, color: C.txtD, margin: 0, fontFamily: "sans-serif" }}>
+          Hecho con <span style={{ color: C.red }}>♥</span> por{" "}
+          <a href="https://acaciaco.com.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.txtB, textDecoration: "none", borderBottom: `1px solid ${C.redBdr}`, paddingBottom: 1 }}>
+            Acaciaco
+          </a>
+        </p>
+      </footer>
 
     </div>
   );
